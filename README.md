@@ -19,12 +19,35 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-| Command         | Description              |
-| --------------- | ------------------------ |
-| `npm run dev`   | Start development server |
-| `npm run build` | Production build         |
-| `npm run start` | Run production server    |
-| `npm run lint`  | Run ESLint               |
+| Command              | Description                          |
+| -------------------- | ------------------------------------ |
+| `npm run dev`        | Start development server             |
+| `npm run build`      | Production static export (`out/`)    |
+| `npm run build:pages`| Static export with GitHub Pages path |
+| `npm run start`      | Run production server (non-Pages)    |
+| `npm run lint`       | Run ESLint                           |
+
+## Deploy to GitHub Pages
+
+This repo deploys automatically to GitHub Pages on every push to `main`.
+
+**Site URL:** [https://codevoapp.github.io/landing-page/](https://codevoapp.github.io/landing-page/)
+
+### One-time GitHub setup
+
+1. Open the repo on GitHub → **Settings → Pages**
+2. Under **Build and deployment → Source**, choose **GitHub Actions**
+3. Push to `main` (or run the **Deploy to GitHub Pages** workflow manually)
+
+The workflow builds a static export with `basePath` `/landing-page` and publishes the `out/` folder.
+
+### Local Pages build
+
+```bash
+npm run build:pages
+```
+
+Output is written to `out/` (already gitignored).
 
 ## What’s included
 
@@ -41,7 +64,7 @@ Visual system:
 - Alternating dark / light section bands
 - Curved dark→light transitions with soft shadow
 - Neon glow accents on dark sections
-- Light sections open on scroll (`OpenOnScroll`)
+- Scroll open animation on light sections
 
 ## Project structure
 
@@ -53,11 +76,12 @@ src/
     Header.tsx
     Footer.tsx
     Reveal.tsx
-    OpenOnScroll.tsx
     ui.tsx
   lib/
     content.ts         # Copy & data
     contact-schema.ts  # Zod schema for contact form
+.github/workflows/
+  deploy.yml           # GitHub Pages deploy
 ```
 
 ## Contact form
@@ -68,3 +92,4 @@ Client-side validation with Zod. On success it shows a local confirmation only �
 
 - Copy and section data live in `src/lib/content.ts`
 - Admin panel is not included
+- Local `next dev` has no `basePath`; Pages builds set `GITHUB_PAGES=true`
