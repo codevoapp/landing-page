@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Codevo
 
-## Getting Started
+Marketing landing page for **Codevo** — a product studio site built with Next.js, React, and Tailwind CSS.
 
-First, run the development server:
+## Stack
+
+- [Next.js](https://nextjs.org/) 16 (App Router)
+- React 19
+- Tailwind CSS 4
+- Zod (contact form validation)
+- TypeScript
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `npm run dev`   | Start development server |
+| `npm run build` | Production build         |
+| `npm run start` | Run production server    |
+| `npm run lint`  | Run ESLint               |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What’s included
 
-## Learn More
+One-page landing with:
 
-To learn more about Next.js, take a look at the following resources:
+- Hero (3D tilt mockup on hover)
+- Intro, Process, Work, Services, Pricing
+- Testimonials, FAQ, Contact
+- Sticky navbar (full → pill on scroll)
+- Multi-column footer with wordmark
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Visual system:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Alternating dark / light section bands
+- Curved dark→light transitions with soft shadow
+- Neon glow accents on dark sections
+- Light sections open on scroll (`OpenOnScroll`)
 
-## Deploy on Vercel
+## Project structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+  app/                 # App Router (layout, page, globals)
+  components/
+    sections/          # Landing sections
+    Header.tsx
+    Footer.tsx
+    Reveal.tsx
+    OpenOnScroll.tsx
+    ui.tsx
+  lib/
+    content.ts         # Copy & data
+    contact-schema.ts  # Zod schema for contact form
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contact form
+
+Client-side validation with Zod. On success it shows a local confirmation only — **no API or database yet**.
+
+## Notes
+
+- Copy and section data live in `src/lib/content.ts`
+- Admin panel is not included
