@@ -1,17 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { navLinks } from "@/lib/content";
-
-function BrandMark() {
-  return (
-    <span className="inline-flex h-6 w-6 items-end gap-[3px]" aria-hidden>
-      <i className="block h-3.5 w-[5px] rounded-[5px] bg-linear-to-b from-cyan to-purple" />
-      <i className="block h-[21px] w-[5px] rounded-[5px] bg-linear-to-b from-cyan to-purple" />
-      <i className="block h-[17px] w-[5px] rounded-[5px] bg-linear-to-b from-cyan to-purple" />
-    </span>
-  );
-}
 
 export function Brand({ className = "" }: { className?: string }) {
   return (
@@ -20,7 +11,14 @@ export function Brand({ className = "" }: { className?: string }) {
       className={`flex items-center gap-2.5 font-display text-base font-bold text-white no-underline ${className}`}
       aria-label="Codevo home"
     >
-      <BrandMark />
+      <Image
+        src="/logo/codevo.png"
+        alt=""
+        width={28}
+        height={28}
+        className="h-7 w-7 object-contain"
+        priority
+      />
       <span>Codevo</span>
     </a>
   );
@@ -68,7 +66,7 @@ export function Header() {
               key={link.href}
               href={link.href}
               onClick={close}
-              className="text-[13px] text-nav no-underline hover:text-white"
+              className="font-ui text-[13px] text-nav no-underline hover:text-white"
             >
               {link.label}
             </a>
@@ -82,7 +80,7 @@ export function Header() {
             open
               ? "absolute top-[calc(100%+200px)] right-4 left-4 inline-flex justify-center md:right-0 md:left-0"
               : "hidden md:inline-flex"
-          } items-center gap-3 rounded-xl bg-linear-to-br from-[#6326ff] to-[#b346ff] px-4 py-3 text-[13px] font-bold text-white no-underline shadow-[0_0_25px_#792cff45] transition-[filter,transform,box-shadow] duration-200 ease-out hover:brightness-110 hover:shadow-[0_0_30px_#792cff66] active:scale-[0.98] active:brightness-90`}
+          } items-center gap-3 rounded-xl bg-linear-to-br from-[#6326ff] to-[#b346ff] px-4 py-3 font-ui text-[13px] font-bold text-white no-underline shadow-[0_0_25px_#792cff45] transition-[filter,transform,box-shadow] duration-200 ease-out hover:brightness-110 hover:shadow-[0_0_30px_#792cff66] active:scale-[0.98] active:brightness-90`}
         >
           Get a free concept <span>↗</span>
         </a>

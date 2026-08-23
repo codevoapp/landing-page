@@ -13,8 +13,9 @@
   --color-orange: #ff8a3d;
   --color-pink: #ff4bc4;
   --color-nav: #c6c6cc;
-  --font-sans: var(--font-dm-sans);
-  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-poppins);
+  --font-display: var(--font-montserrat);
+  --font-ui: var(--font-rubik);
   --container-site: 1180px;
 }
 

@@ -1,25 +1,31 @@
 import type { Metadata } from "next";
-import { DM_Sans, Space_Grotesk } from "next/font/google";
+import { Montserrat, Poppins, Rubik } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const rubik = Rubik({
+  variable: "--font-rubik",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Codevo — Websites, shops & digital experiences",
+  title: "Codevo - Software Development Agency",
   description:
-    "Codevo — premium websites, landing pages and online shops engineered for growth.",
+    "Codevo - premium websites, landing pages and online shops engineered for growth.",
 };
 
 export default function RootLayout({
@@ -28,7 +34,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${spaceGrotesk.variable}`}>
+    <html
+      lang="en"
+      className={`${poppins.variable} ${montserrat.variable} ${rubik.variable}`}
+    >
       <body>
         <div className="noise" aria-hidden />
         <div className="stars" aria-hidden />
