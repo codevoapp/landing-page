@@ -73,7 +73,7 @@ src/
   app/                 # App Router (layout, page, globals)
   components/
     sections/          # Landing sections
-    Header.tsx
+    Navbar.tsx
     Footer.tsx
     Reveal.tsx
     ui.tsx

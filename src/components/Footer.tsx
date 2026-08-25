@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Brand } from "@/components/Header";
+import { Brand } from "@/components/Navbar";
 import { services } from "@/lib/content";
 
 const companyLinks = [

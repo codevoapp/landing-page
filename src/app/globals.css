@@ -1,3 +1,4 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@700&display=swap");
 @import "tailwindcss";
 
 @theme inline {
@@ -7,8 +8,8 @@
   --color-ink: #f7f5f3;
   --color-muted: #a5a6af;
   --color-line: rgb(255 255 255 / 0.12);
-  --color-purple: #8c4cff;
-  --color-cyan: #2de4ff;
+  --color-purple: #8844F2;
+  --color-cyan: #18C0EF;
   --color-green: #36e7a4;
   --color-orange: #ff8a3d;
   --color-pink: #ff4bc4;
@@ -16,6 +17,7 @@
   --font-sans: var(--font-poppins);
   --font-display: var(--font-montserrat);
   --font-ui: var(--font-rubik);
+  --font-brand: "Satoshi", sans-serif;
   --container-site: 1180px;
 }
 

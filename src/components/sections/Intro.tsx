@@ -3,7 +3,10 @@ import { Container, Eyebrow, SectionHeading } from "@/components/ui";
 
 export function Intro() {
   return (
-    <section className="band-dark glow-compact band-curve-b relative py-[125px] text-center max-md:py-[90px]">
+    <section
+      id="intro"
+      className="band-dark glow-compact band-curve-b relative py-[125px] text-center max-md:py-[90px]"
+    >
       <Reveal>
         <Container narrow>
           <Eyebrow>Built for impact</Eyebrow>

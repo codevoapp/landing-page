@@ -1,9 +1,9 @@
 export const navLinks = [
-  { href: "#process", label: "Process" },
-  { href: "#work", label: "Work" },
+  { href: "#intro", label: "About Us" },
   { href: "#services", label: "Services" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#work", label: "Our Works" },
+  { href: "#process", label: "Our Process" },
+  { href: "#contact", label: "Contact Us" },
 ] as const;
 
 export const processSteps = [

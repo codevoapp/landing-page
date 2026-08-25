@@ -47,7 +47,7 @@ export function BtnPrimary({
   type?: "button" | "submit";
   className?: string;
 }) {
-  const classes = `inline-flex items-center justify-center gap-3 rounded-xl bg-linear-to-br from-[#6b29ff] to-[#b348ff] px-4 py-3 font-ui text-[13px] font-bold text-white no-underline shadow-[0_15px_40px_#772cff3b] transition-[filter,transform,box-shadow] duration-200 ease-out hover:brightness-110 hover:shadow-[0_18px_44px_#772cff55] active:brightness-90 active:scale-[0.98] active:shadow-[0_8px_24px_#772cff33] ${className}`;
+  const classes = `inline-flex items-center justify-center gap-3 rounded-xl bg-linear-to-r from-[#8844F2] to-[#18C0EF] px-4 py-3 font-ui text-[13px] font-bold text-white no-underline shadow-[0_15px_40px_#8844F23b] transition-[filter,transform,box-shadow] duration-200 ease-out hover:brightness-110 hover:shadow-[0_18px_44px_#18C0EF55] active:brightness-90 active:scale-[0.98] active:shadow-[0_8px_24px_#8844F233] ${className}`;
 
   if (asButton) {
     return (

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Poppins, Rubik } from "next/font/google";
+import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -41,7 +41,7 @@ export default function RootLayout({
       <body>
         <div className="noise" aria-hidden />
         <div className="stars" aria-hidden />
-        <Header />
+        <Navbar />
         <main>{children}</main>
         <Footer />
       </body>
