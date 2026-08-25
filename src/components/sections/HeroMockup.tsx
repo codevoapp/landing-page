@@ -1,19 +1,53 @@
 "use client";
 
-import { useRef, type PointerEvent } from "react";
+import Image from "next/image";
+import { useRef, useState, type PointerEvent, type ReactNode } from "react";
+import { assetPath } from "@/lib/paths";
+import {
+  MockupVariantBlue,
+  MockupVariantGreen,
+  MockupVariantOrange,
+  MockupVariantPurple,
+} from "@/components/sections/HeroMockupVariants";
 
-const BASE_RX = 3;
-const BASE_RY = -7;
-const MAX_TILT = 10;
+const BASE_RX = 2;
+const BASE_RY = -5;
+const MAX_TILT = 20;
+const CORNER_TILT = 30;
+
+const cornerTilt: Record<
+  "top-left" | "top-right" | "bottom-left" | "bottom-right",
+  { rx: number; ry: number }
+> = {
+  // Hovered corner comes forward toward the cursor.
+  "top-left": { rx: -CORNER_TILT, ry: CORNER_TILT },
+  "top-right": { rx: -CORNER_TILT, ry: -CORNER_TILT },
+  "bottom-left": { rx: CORNER_TILT, ry: CORNER_TILT },
+  "bottom-right": { rx: CORNER_TILT, ry: -CORNER_TILT },
+};
+
+const staticLoader = ({ src }: { src: string }) => src;
+const baseMockup = assetPath("/images/group-94.svg");
+
+const cornerVariants: Record<
+  "top-left" | "top-right" | "bottom-left" | "bottom-right",
+  ReactNode
+> = {
+  "top-left": <MockupVariantBlue />,
+  "top-right": <MockupVariantPurple />,
+  "bottom-left": <MockupVariantGreen />,
+  "bottom-right": <MockupVariantOrange />,
+};
+
+type Corner = keyof typeof cornerVariants;
 
 export function HeroMockup() {
   const cardRef = useRef<HTMLDivElement>(null);
-  const glowRef = useRef<HTMLDivElement>(null);
   const frame = useRef(0);
+  const [activeCorner, setActiveCorner] = useState<Corner | null>(null);
 
   function update(clientX: number, clientY: number, reset = false) {
     const card = cardRef.current;
-    const glow = glowRef.current;
     if (!card) return;
 
     cancelAnimationFrame(frame.current);
@@ -21,11 +55,6 @@ export function HeroMockup() {
       if (reset) {
         card.style.transition = "transform 0.45s ease-out";
         card.style.transform = `rotateX(${BASE_RX}deg) rotateY(${BASE_RY}deg)`;
-        if (glow) {
-          glow.style.transition = "background 0.45s ease-out";
-          glow.style.background =
-            "radial-gradient(420px circle at 50% 30%, rgb(180 120 255 / 0.35), transparent 55%)";
-        }
         return;
       }
 
@@ -33,22 +62,36 @@ export function HeroMockup() {
       const rect = card.getBoundingClientRect();
       const px = (clientX - rect.left) / rect.width;
       const py = (clientY - rect.top) / rect.height;
-      const rx = BASE_RX + (0.5 - py) * MAX_TILT * 2;
-      const ry = BASE_RY + (px - 0.5) * MAX_TILT * 2;
+      // Hovered side comes forward toward the cursor.
+      const rx = (py - 0.5) * MAX_TILT * 2;
+      const ry = (0.5 - px) * MAX_TILT * 2;
 
       card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
-      if (glow) {
-        glow.style.transition = "background 0.08s ease-out";
-        glow.style.background = `radial-gradient(420px circle at ${px * 100}% ${py * 100}%, rgb(180 120 255 / 0.35), transparent 55%)`;
-      }
     });
   }
 
   function onMove(e: PointerEvent<HTMLDivElement>) {
+    if (activeCorner) return;
     update(e.clientX, e.clientY);
   }
 
   function onLeave() {
+    update(0, 0, true);
+    setActiveCorner(null);
+  }
+
+  function showCorner(corner: Corner) {
+    setActiveCorner(corner);
+    const card = cardRef.current;
+    if (card) {
+      const { rx, ry } = cornerTilt[corner];
+      card.style.transition = "transform 0.35s ease-out";
+      card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+    }
+  }
+
+  function hideCorner() {
+    setActiveCorner(null);
     update(0, 0, true);
   }
 
@@ -57,36 +100,62 @@ export function HeroMockup() {
       ref={cardRef}
       onPointerMove={onMove}
       onPointerLeave={onLeave}
-      className="hero-mockup relative rounded-[18px] border border-white/12 bg-[#0b0c12] p-2 shadow-[0_40px_100px_#000,0_0_100px_#672cff24] will-change-transform [transform:rotateX(3deg)_rotateY(-7deg)] [transform-style:preserve-3d]"
+      className="hero-mockup relative w-full will-change-transform [transform:rotateX(2deg)_rotateY(-5deg)] [transform-style:preserve-3d]"
     >
-      <div
-        ref={glowRef}
-        className="pointer-events-none absolute inset-0 z-10 rounded-[16px] opacity-60 mix-blend-soft-light"
-        style={{
-          background:
-            "radial-gradient(420px circle at 50% 30%, rgb(180 120 255 / 0.35), transparent 55%)",
-        }}
-        aria-hidden
-      />
+      <div className="relative aspect-[574/394] w-full">
+        <Image
+          src={baseMockup}
+          alt="Website preview mockup"
+          width={574}
+          height={394}
+          className={`absolute inset-0 h-full w-full object-contain drop-shadow-[0_40px_80px_#00000090] transition-opacity duration-300 ${
+            activeCorner ? "opacity-0" : "opacity-100"
+          }`}
+          loader={staticLoader}
+          unoptimized
+          priority
+        />
 
-      <div className="relative flex gap-[5px] p-[7px]">
-        <i className="block h-1.5 w-1.5 rounded-full bg-[#444]" />
-        <i className="block h-1.5 w-1.5 rounded-full bg-[#444]" />
-        <i className="block h-1.5 w-1.5 rounded-full bg-[#444]" />
-      </div>
-      <div className="relative border-b border-white/5 px-3 py-2 text-[8px] text-[#666]">
-        Codevo{" "}
-        <span className="float-right">Services &nbsp; Work &nbsp; Contact</span>
-      </div>
-      <div className="device-screen relative m-[7px] h-[460px] overflow-hidden rounded-xl max-md:h-[360px]">
-        <div className="absolute top-[5%] left-[20%] h-[260px] w-[260px] rounded-full bg-[#a84dff2b] blur-[45px]" />
-        <div className="absolute top-[27%] left-[11%] font-display text-[42px] leading-none font-medium">
-          Your next
-          <br />
-          <strong>digital move.</strong>
-        </div>
-        <div className="absolute top-[48%] left-[11%] h-px w-2/5 bg-white/15" />
-        <div className="absolute right-[10%] bottom-[10%] h-1/4 w-2/5 rounded-[10px] border border-white/10 bg-white/5" />
+        {(Object.keys(cornerVariants) as Corner[]).map((corner) => (
+          <div
+            key={corner}
+            className={`pointer-events-none absolute inset-0 drop-shadow-[0_40px_80px_#00000090] transition-opacity duration-300 ${
+              activeCorner === corner ? "opacity-100" : "opacity-0"
+            }`}
+            aria-hidden
+          >
+            {cornerVariants[corner]}
+          </div>
+        ))}
+
+        <button
+          type="button"
+          aria-label="Preview blue variant"
+          className="absolute top-0 left-0 z-10 h-[42%] w-[42%] cursor-pointer border-0 bg-transparent"
+          onPointerEnter={() => showCorner("top-left")}
+          onPointerLeave={hideCorner}
+        />
+        <button
+          type="button"
+          aria-label="Preview purple variant"
+          className="absolute top-0 right-0 z-10 h-[42%] w-[42%] cursor-pointer border-0 bg-transparent"
+          onPointerEnter={() => showCorner("top-right")}
+          onPointerLeave={hideCorner}
+        />
+        <button
+          type="button"
+          aria-label="Preview green variant"
+          className="absolute bottom-0 left-0 z-10 h-[42%] w-[42%] cursor-pointer border-0 bg-transparent"
+          onPointerEnter={() => showCorner("bottom-left")}
+          onPointerLeave={hideCorner}
+        />
+        <button
+          type="button"
+          aria-label="Preview orange variant"
+          className="absolute right-0 bottom-0 z-10 h-[42%] w-[42%] cursor-pointer border-0 bg-transparent"
+          onPointerEnter={() => showCorner("bottom-right")}
+          onPointerLeave={hideCorner}
+        />
       </div>
     </div>
   );

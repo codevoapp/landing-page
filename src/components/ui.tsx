@@ -47,19 +47,31 @@ export function BtnPrimary({
   type?: "button" | "submit";
   className?: string;
 }) {
-  const classes = `inline-flex items-center justify-center gap-3 rounded-xl bg-linear-to-r from-[#8844F2] to-[#18C0EF] px-4 py-3 font-ui text-[13px] font-bold text-white no-underline shadow-[0_15px_40px_#8844F23b] transition-[filter,transform,box-shadow] duration-200 ease-out hover:brightness-110 hover:shadow-[0_18px_44px_#18C0EF55] active:brightness-90 active:scale-[0.98] active:shadow-[0_8px_24px_#8844F233] ${className}`;
+  const classes = `group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-xl bg-linear-to-r from-[#8844F2] to-[#18C0EF] px-4 py-3 font-ui text-[13px] text-white no-underline shadow-[0_15px_40px_#8844F23b] transition-[color,transform,filter,box-shadow] duration-200 ease-out hover:text-black hover:shadow-[0_18px_44px_#18C0EF55] active:scale-[0.98] active:brightness-90 active:shadow-[0_8px_24px_#8844F233] ${className}`;
+
+  const content = (
+    <>
+      <span
+        aria-hidden
+        className="absolute inset-0 bg-white opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+      />
+      <span className="relative z-10 inline-flex items-center gap-2">
+        {children}
+      </span>
+    </>
+  );
 
   if (asButton) {
     return (
       <button type={type} className={`${classes} cursor-pointer border-0`}>
-        {children}
+        {content}
       </button>
     );
   }
 
   return (
     <a href={href} className={classes}>
-      {children}
+      {content}
     </a>
   );
 }
@@ -76,7 +88,7 @@ export function BtnGhost({
   return (
     <a
       href={href}
-      className={`inline-flex items-center justify-center gap-3 rounded-xl border border-[color:var(--band-card-border,var(--color-line))] bg-[var(--band-ghost,rgb(255_255_255/0.05))] px-4 py-3 font-ui text-[13px] font-bold text-[color:var(--band-ink,#fff)] no-underline transition-[background-color,border-color,transform,filter] duration-200 ease-out hover:border-white/25 hover:bg-white/10 hover:brightness-110 active:scale-[0.98] active:bg-white/[0.04] active:brightness-90 ${className}`}
+      className={`inline-flex items-center justify-center gap-3 rounded-xl border border-[color:var(--band-card-border,var(--color-line))] bg-[var(--band-ghost,rgb(255_255_255/0.05))] px-4 py-3 font-ui text-[13px] text-[color:var(--band-ink,#fff)] no-underline transition-[background-color,border-color,transform,filter] duration-200 ease-out hover:border-white/25 hover:bg-white/10 hover:brightness-110 active:scale-[0.98] active:bg-white/[0.04] active:brightness-90 ${className}`}
     >
       {children}
     </a>

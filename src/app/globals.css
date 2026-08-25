@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-bg: #030407;
+  --color-bg: #100F1F;
   --color-panel: #0a0c11;
   --color-panel2: #10121a;
   --color-ink: #f7f5f3;
@@ -17,14 +17,15 @@
   --font-sans: var(--font-poppins);
   --font-display: var(--font-montserrat);
   --font-ui: var(--font-rubik);
+  --font-url: var(--font-roboto);
   --font-brand: "Satoshi", sans-serif;
   --container-site: 1180px;
 }
 
 /* Alternating page bands — dark / light */
 .band-dark {
-  --band-bg: #030407;
-  --band-bg-elevated: #090a0f;
+  --band-bg: #100F1F;
+  --band-bg-elevated: #16152a;
   --band-ink: #f7f5f3;
   --band-muted: #8f9099;
   --band-soft: #a6a6b0;
@@ -192,9 +193,6 @@
   position: relative;
   z-index: 2;
   overflow: visible;
-  box-shadow:
-    0 -18px 48px rgb(0 0 0 / 0.28),
-    0 -6px 18px rgb(0 0 0 / 0.16);
 }
 
 .band-curve-b {
@@ -203,27 +201,6 @@
   position: relative;
   z-index: 2;
   overflow: visible;
-  box-shadow:
-    0 22px 56px rgb(0 0 0 / 0.32),
-    0 8px 22px rgb(0 0 0 / 0.18);
-}
-
-/* Soft shadow cast onto the light band under a dark curve */
-.band-light.band-curve-pull::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: clamp(3rem, 8vw, 5.5rem);
-  pointer-events: none;
-  z-index: 0;
-  background: linear-gradient(
-    to bottom,
-    rgb(0 0 0 / 0.16),
-    rgb(0 0 0 / 0.06) 45%,
-    transparent
-  );
 }
 
 .band-curve-pull {
@@ -287,6 +264,59 @@ body::before {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.hero-title-gradient {
+  background: linear-gradient(90deg, #8844F2 0%, #5b8cff 45%, #18C0EF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hero atmosphere — soft blue glow + fading dot grid */
+.band-dark.glow-hero {
+  --glow-1: #5b6cff;
+  --glow-2: #3d4dff;
+  --glow-1-x: 72%;
+  --glow-1-y: 48%;
+  --glow-2-x: 28%;
+  --glow-2-y: 55%;
+}
+
+.band-dark.glow-hero::before {
+  width: min(36rem, 70vw);
+  height: min(28rem, 55vw);
+  opacity: 0.32;
+  filter: blur(100px);
+}
+
+.band-dark.glow-hero::after {
+  width: min(28rem, 55vw);
+  height: min(22rem, 45vw);
+  opacity: 0.22;
+  filter: blur(110px);
+}
+
+.band-dark > .hero-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 50% 45% at 70% 45%, rgb(80 100 255 / 0.32), transparent 60%),
+    radial-gradient(ellipse 40% 40% at 30% 50%, rgb(120 80 255 / 0.18), transparent 55%);
+}
+
+.band-dark > .hero-dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+  background-image: radial-gradient(rgb(255 255 255 / 0.45) 1.25px, transparent 1.25px);
+  background-size: 100px 100px;
+  mask-image: linear-gradient(to bottom, black 40%, transparent 90%);
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 90%);
 }
 
 .work-visual {

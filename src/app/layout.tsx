@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Poppins, Rubik } from "next/font/google";
+import { Montserrat, Poppins, Roboto, Rubik } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
@@ -22,6 +22,12 @@ const rubik = Rubik({
   weight: ["400", "500", "600", "700"],
 });
 
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Codevo - Software Development Agency",
   description:
@@ -36,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${poppins.variable} ${montserrat.variable} ${rubik.variable}`}
+      className={`${poppins.variable} ${montserrat.variable} ${rubik.variable} ${roboto.variable}`}
     >
       <body>
         <div className="noise" aria-hidden />
