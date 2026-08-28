@@ -1,4 +1,3 @@
-import { Reveal } from "@/components/Reveal";
 import { Container, Eyebrow, SectionHeading } from "@/components/ui";
 import { projects } from "@/lib/content";
 
@@ -15,10 +14,10 @@ export function Work() {
   return (
     <section
       id="work"
-      className="band-dark glow-cyan band-curve-t band-curve-pull relative pb-[125px] max-md:pb-[90px]"
+      className="band-dark glow-cyan relative pt-10 pb-[125px] max-md:pt-8 max-md:pb-[90px]"
     >
       <Container>
-        <Reveal className="mb-[60px] flex items-end justify-between gap-10 max-md:block">
+        <div className="mb-[60px] flex items-end justify-between gap-10 max-md:block">
           <div>
             <Eyebrow>02 — Selected work</Eyebrow>
             <SectionHeading>
@@ -33,13 +32,12 @@ export function Work() {
           >
             Start a project ↗
           </a>
-        </Reveal>
+        </div>
 
         <div className="grid grid-cols-2 gap-[22px] max-md:grid-cols-1">
           {projects.map((project) => (
-            <Reveal
+            <article
               key={project.title}
-              as="article"
               className="overflow-hidden rounded-[18px] border border-[color:var(--band-card-border)] bg-[var(--band-card)] p-2.5 shadow-[0_12px_40px_rgb(12_13_18/0.06)] transition-[border-color,box-shadow] duration-300 ease-out hover:border-[#9c58ff88] hover:shadow-[0_12px_40px_rgb(12_13_18/0.06),0_0_60px_#7b3bff22]"
             >
               <div
@@ -59,7 +57,7 @@ export function Work() {
                   {project.category}
                 </span>
               </div>
-            </Reveal>
+            </article>
           ))}
         </div>
       </Container>

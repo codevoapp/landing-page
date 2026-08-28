@@ -1,4 +1,3 @@
-import { Reveal } from "@/components/Reveal";
 import { HeroMockup } from "@/components/sections/HeroMockup";
 import { BtnGhost, BtnPrimary, Container } from "@/components/ui";
 
@@ -32,7 +31,7 @@ export function Hero() {
       <div className="hero-glow" aria-hidden />
       <div className="hero-dots" aria-hidden />
       <Container className="grid grid-cols-[1fr_1fr] items-center gap-12 max-lg:gap-10 max-md:grid-cols-1">
-        <Reveal>
+        <div>
           <h1 className="m-0 font-ui text-[clamp(40px,5.2vw,64px)] leading-[1.08] font-medium tracking-[-0.035em]">
             <span className="hero-title-gradient">Dream of Getting</span>
             <br />
@@ -66,11 +65,11 @@ export function Hero() {
               </span>
             </BtnGhost>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay className="perspective-[1200px] max-md:mt-2 max-md:max-w-[420px] max-md:mx-auto">
+        <div className="perspective-[1200px] max-md:mt-2 max-md:max-w-[420px] max-md:mx-auto">
           <HeroMockup />
-        </Reveal>
+        </div>
       </Container>
     </section>
   );

@@ -1,4 +1,3 @@
-import { Reveal } from "@/components/Reveal";
 import {
   BtnGhost,
   BtnPrimary,
@@ -12,10 +11,10 @@ export function Pricing() {
   return (
     <section
       id="pricing"
-      className="band-dark glow-wide band-curve-b relative py-[125px] max-md:py-[90px]"
+      className="band-dark glow-wide band-curve-b band-curve-shadow relative py-[125px] max-md:py-[90px]"
     >
       <Container>
-        <Reveal className="mb-[60px] flex items-end justify-between gap-10 max-md:block">
+        <div className="mb-[60px] flex items-end justify-between gap-10 max-md:block">
           <div>
             <Eyebrow>04 — Simple pricing</Eyebrow>
             <SectionHeading>
@@ -27,13 +26,12 @@ export function Pricing() {
           <p className="max-w-[360px] text-[color:var(--band-muted)] max-md:mt-5">
             Choose a starting point. We tailor the final scope to your goals.
           </p>
-        </Reveal>
+        </div>
 
         <div className="grid grid-cols-3 gap-[18px] max-md:grid-cols-1">
           {pricingPlans.map((plan) => (
-            <Reveal
+            <article
               key={plan.name}
-              as="article"
               className={`rounded-[18px] border bg-[var(--band-card)] p-[30px] shadow-[0_12px_40px_rgb(12_13_18/0.06)] transition-[border-color,box-shadow] duration-300 ease-out hover:border-[#9c58ff88] hover:shadow-[0_12px_40px_rgb(12_13_18/0.06),0_0_60px_#7b3bff22] ${
                 plan.featured
                   ? "border-[#9c58ff88] shadow-[0_0_60px_#7b3bff22]"
@@ -66,7 +64,7 @@ export function Pricing() {
                   Choose {plan.name} <span>↗</span>
                 </BtnGhost>
               )}
-            </Reveal>
+            </article>
           ))}
         </div>
       </Container>

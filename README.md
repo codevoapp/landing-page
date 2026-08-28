@@ -75,7 +75,6 @@ src/
     sections/          # Landing sections
     Navbar.tsx
     Footer.tsx
-    Reveal.tsx
     ui.tsx
   lib/
     content.ts         # Copy & data

@@ -1,4 +1,3 @@
-import { Reveal } from "@/components/Reveal";
 import { Container, Eyebrow, SectionHeading } from "@/components/ui";
 import { processSteps } from "@/lib/content";
 
@@ -9,7 +8,7 @@ export function Process() {
       className="band-light band-curve-pull relative pb-[125px] max-md:pb-[90px]"
     >
       <Container>
-        <Reveal className="mb-[60px] flex items-end justify-between gap-10 max-md:block">
+        <div className="mb-[60px] flex items-end justify-between gap-10 max-md:block">
           <div>
             <Eyebrow>01 — Process</Eyebrow>
             <SectionHeading>
@@ -21,13 +20,12 @@ export function Process() {
           <p className="max-w-[360px] text-[color:var(--band-muted)] max-md:mt-5">
             Clear communication, fast iterations and no agency fog.
           </p>
-        </Reveal>
+        </div>
 
         <div className="grid grid-cols-4 gap-px bg-[color:var(--band-line)] max-md:grid-cols-2">
           {processSteps.map((step) => (
-            <Reveal
+            <article
               key={step.n}
-              as="article"
               className="min-h-[260px] bg-[var(--band-bg)] p-[34px]"
             >
               <span className="text-[11px] text-[color:var(--band-muted)]">
@@ -41,7 +39,7 @@ export function Process() {
                   {step.body}
                 </p>
               </div>
-            </Reveal>
+            </article>
           ))}
         </div>
       </Container>

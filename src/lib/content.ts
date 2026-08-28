@@ -1,5 +1,5 @@
 export const navLinks = [
-  { href: "#intro", label: "About Us" },
+  { href: "#about", label: "About Us" },
   { href: "#services", label: "Services" },
   { href: "#work", label: "Our Works" },
   { href: "#process", label: "Our Process" },
@@ -136,3 +136,36 @@ export const faqs = [
 ] as const;
 
 export const proofAvatars = ["JS", "MK", "AR", "+"] as const;
+
+export const teamMembers = [
+  {
+    name: "Devy Rahmawati",
+    role: "Project Manager",
+    image: "/images/team/devy.jpg",
+  },
+  {
+    name: "Rizka Hapsari",
+    role: "Digital Marketing Specialist",
+    image: "/images/team/rizka.jpg",
+  },
+  {
+    name: "Septian",
+    role: "Senior Video Editor",
+    image: "/images/team/septian.jpg",
+  },
+  {
+    name: "Rahmat Tomy",
+    role: "Tech Lead",
+    image: "/images/team/tomy.jpg",
+  },
+  {
+    name: "Yuanfi",
+    role: "Front End Developer",
+    image: "/images/team/yuanfi.jpg",
+  },
+  {
+    name: "Irwansyah",
+    role: "Back End Developer",
+    image: "/images/team/irwansyah.jpg",
+  },
+] as const;
