@@ -45,6 +45,27 @@ function PlusIcon({ className = "" }: { className?: string }) {
   );
 }
 
+function MinusIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden
+    >
+      <path
+        d="M1.5 7h11"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export default function Team() {
   return (
     <section
@@ -69,33 +90,45 @@ export default function Team() {
 
       <ul className="m-0 grid w-full list-none grid-cols-6 gap-0 p-0 max-lg:grid-cols-3 max-sm:grid-cols-2">
         {teamMembers.map((member) => (
-          <li key={member.name} className="group relative flex flex-col">
-            <div className="relative aspect-[3/4] overflow-hidden">
-              <Image
-                src={assetPath(member.image)}
-                alt={member.name}
-                fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 17vw"
-                className="scale-[1.06] object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.1]"
-              />
-            </div>
+          <li
+            key={member.name}
+            className="group relative aspect-[3/4] overflow-hidden"
+          >
+            <Image
+              src={assetPath(member.image)}
+              alt={member.name}
+              fill
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 17vw"
+              className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.06] group-focus-within:scale-[1.06]"
+            />
 
-            <div className="flex items-start justify-between gap-2 bg-[#12101F] px-3.5 py-3.5 max-md:px-2.5 max-md:py-3">
-              <div className="min-w-0">
-                <p className="m-0 truncate font-ui text-[14px] leading-tight font-medium text-white max-md:text-[12px]">
-                  {member.name}
-                </p>
-                <p className="m-0 mt-1 truncate font-sans text-[12px] leading-tight text-[#A1A1AA] max-md:text-[10px]">
-                  {member.role}
-                </p>
+            <div
+              className="absolute inset-x-0 bottom-0 z-10 flex flex-col bg-[#12101F] px-3.5 pt-3.5 pb-3.5 transition-[background,padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-linear-to-b group-hover:from-[#A03A9A] group-hover:via-[#6B2B7A] group-hover:to-[#1E1535] group-hover:pt-5 group-hover:pb-5 group-focus-within:bg-linear-to-b group-focus-within:from-[#A03A9A] group-focus-within:via-[#6B2B7A] group-focus-within:to-[#1E1535] group-focus-within:pt-5 group-focus-within:pb-5 max-md:px-2.5 max-md:pt-3 max-md:pb-3"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div className="min-w-0">
+                  <p className="m-0 font-ui text-[14px] leading-tight font-medium text-white transition-[font-size] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[16px] group-focus-within:text-[16px] max-md:text-[12px] max-md:group-hover:text-[13px]">
+                    {member.name}
+                  </p>
+                  <p className="m-0 mt-1 font-sans text-[12px] leading-tight text-[#A1A1AA] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white/90 group-focus-within:text-white/90 max-md:text-[10px]">
+                    {member.role}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center border-0 bg-transparent p-0 text-white/80 transition-colors hover:text-white"
+                  aria-label={`More about ${member.name}`}
+                >
+                  <PlusIcon className="group-hover:hidden group-focus-within:hidden" />
+                  <MinusIcon className="hidden group-hover:block group-focus-within:block" />
+                </button>
               </div>
-              <button
-                type="button"
-                className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center border-0 bg-transparent p-0 text-white/80 transition-colors hover:text-white"
-                aria-label={`More about ${member.name}`}
-              >
-                <PlusIcon />
-              </button>
+
+              <p className="m-0 grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity,margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mt-3 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-focus-within:mt-3 group-focus-within:grid-rows-[1fr] group-focus-within:opacity-100">
+                <span className="overflow-hidden font-sans text-[11px] leading-[1.55] text-white/95 max-md:text-[10px]">
+                  {member.bio}
+                </span>
+              </p>
             </div>
           </li>
         ))}

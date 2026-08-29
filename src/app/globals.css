@@ -303,11 +303,28 @@ body::before {
   color: transparent;
 }
 
+.quote-text {
+  transition: color 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.quote-text:has(.quote-accent:hover) {
+  color: #3a3a48;
+}
+
 .quote-accent {
   background: linear-gradient(90deg, #8844f2 0%, #18c0ef 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  transition: filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.quote-text:has(.quote-accent:hover) .quote-accent {
+  filter: brightness(0.4) saturate(0.65);
+}
+
+.quote-text:has(.quote-accent:hover) .quote-accent:hover {
+  filter: brightness(1.35) saturate(1.25);
 }
 
 .band-dark > .quote-dots {

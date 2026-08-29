@@ -8,7 +8,7 @@ export default function Quote() {
     >
       <div className="quote-dots inset-0" aria-hidden />
       <Container className="relative z-[1]">
-        <p className="mx-auto max-w-[920px] font-ui text-[clamp(22px,3.2vw,36px)] leading-[1.35] font-semibold tracking-[-0.02em] text-white max-md:max-w-none">
+        <p className="quote-text mx-auto max-w-[920px] font-ui text-[clamp(22px,3.2vw,36px)] leading-[1.35] font-semibold tracking-[-0.02em] text-white max-md:max-w-none">
           Whether we&apos;re{" "}
           <span className="quote-accent">creating something from scratch</span>
           , or

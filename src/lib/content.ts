@@ -142,30 +142,36 @@ export const teamMembers = [
     name: "Devy Rahmawati",
     role: "Project Manager",
     image: "/images/team/devy.jpg",
+    bio: "With a background in multimedia, UI/UX, video, and digital marketing, she brings diverse disciplines together to drive successful project delivery. She works closely with designers, editors, and developers to ensure projects stay aligned, efficient, and on track.",
   },
   {
     name: "Rizka Hapsari",
     role: "Digital Marketing Specialist",
     image: "/images/team/rizka.jpg",
+    bio: "She crafts campaigns that connect brands with the right audience. From content strategy to performance ads, she turns insights into growth and keeps every touchpoint consistent with the brand voice.",
   },
   {
     name: "Septian",
     role: "Senior Video Editor",
     image: "/images/team/septian.jpg",
+    bio: "He shapes stories through motion, pacing, and visual polish. With a sharp eye for detail, he delivers video work that feels intentional, engaging, and ready for every platform.",
   },
   {
     name: "Rahmat Tomy",
     role: "Tech Lead",
     image: "/images/team/tomy.jpg",
+    bio: "He leads technical decisions with clarity and pragmatism. From architecture to delivery, he helps the team build reliable systems that scale with the product and the business.",
   },
   {
     name: "Yuanfi",
     role: "Front End Developer",
     image: "/images/team/yuanfi.jpg",
+    bio: "He turns designs into fast, accessible interfaces. Focused on clean interaction and solid craft, he builds frontends that feel smooth and stay maintainable as products grow.",
   },
   {
     name: "Irwansyah",
     role: "Back End Developer",
     image: "/images/team/irwansyah.jpg",
+    bio: "He builds the systems behind the experience — APIs, data, and infrastructure. Reliable, secure, and efficient backends are his priority so products can run with confidence.",
   },
 ] as const;
