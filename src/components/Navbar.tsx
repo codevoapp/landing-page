@@ -13,13 +13,13 @@ const languages = [
     code: "en",
     label: "ENGLISH",
     short: "EN",
-    flag: assetPath("/icons/emojione_flag-for-united-kingdom.svg"),
+    flag: assetPath("/icons/flag-us.svg"),
   },
   {
     code: "id",
     label: "INDONESIA",
     short: "ID",
-    flag: assetPath("/icons/emojione_flag-for-indonesia.svg"),
+    flag: assetPath("/icons/flag-id.svg"),
   },
 ] as const;
 
@@ -152,7 +152,7 @@ export function Navbar() {
                 <span>{lang.short}</span>
               </span>
               <Image
-                src={assetPath("/icons/eva_arrow-up-fill.svg")}
+                src={assetPath("/icons/arrow-up.svg")}
                 alt=""
                 width={16}
                 height={16}

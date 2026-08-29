@@ -25,64 +25,42 @@ function ArrowIcon({ className = "" }: { className?: string }) {
 
 const values = [
   {
-    title: "Understand Your Target",
+    title: (
+      <>
+        Understand
+        <br />
+        Your Target
+      </>
+    ),
     color: "#7EB6FF",
     body: "Our process will help refine your ideas, so your website or product speaks directly to your customer.",
-    icon: (
-      <svg viewBox="0 0 40 40" className="h-8 w-8" fill="none" aria-hidden>
-        <circle cx="20" cy="20" r="12" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="20" cy="20" r="7" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="20" cy="20" r="2" fill="currentColor" />
-      </svg>
-    ),
+    icon: "/icons/target.svg",
   },
   {
-    title: "Deliver success not just a service",
+    title: (
+      <>
+        Deliver success
+        <br />
+        not just a service
+      </>
+    ),
     color: "#C4B5FD",
     body: "We create reliable digital solutions designed to deliver real results for businesses and their customers.",
-    icon: (
-      <svg viewBox="0 0 40 40" className="h-8 w-8" fill="none" aria-hidden>
-        <path
-          d="M20 9 21.6 16.2 28.8 17.8 21.6 19.4 20 26.6 18.4 19.4 11.2 17.8 18.4 16.2 20 9Z"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M28 11.5 28.6 13.8 30.9 14.4 28.6 15 28 17.3 27.4 15 25.1 14.4 27.4 13.8 28 11.5Z"
-          fill="currentColor"
-        />
-      </svg>
-    ),
+    icon: "/icons/gear.svg",
   },
   {
-    title: "Build For Growth",
+    title: (
+      <>
+        Build
+        <br />
+        For Growth
+      </>
+    ),
     color: "#E9A8FF",
     body: "We build scalable digital solutions that support your goals today and grow with your business tomorrow.",
-    icon: (
-      <svg viewBox="0 0 40 40" className="h-8 w-8" fill="none" aria-hidden>
-        <path
-          d="M10 27V22h4.5v5H10Zm7.5 0V17h4.5v10h-4.5Zm7.5 0V13h4.5v14H25Z"
-          fill="currentColor"
-        />
-        <path
-          d="M11 15.5 20 10l9 7.5"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M25.5 10.5H29V14"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
+    icon: "/icons/growth.svg",
   },
-] as const;
+];
 
 export default function About() {
   return (
@@ -103,7 +81,7 @@ export default function About() {
               connections with our clients.
             </h2>
 
-            <p className="m-0 justify-self-end pt-1 font-sans text-[14px] leading-[1.75] text-[#A1A1AA] max-lg:max-w-none max-lg:justify-self-start">
+            <p className="m-0 justify-self-end pt-1 font-sans text-[14px] leading-[1.25] max-lg:max-w-none max-lg:justify-self-start">
               We are an IT development and creative agency delivering digital
               solutions that combine technology, design, and creativity. From
               web and app development to branding and creative content, we help
@@ -113,40 +91,117 @@ export default function About() {
         </div>
 
         <div className="relative -mt-86 grid grid-cols-2 items-center gap-x-8 gap-y-8 max-lg:mt-0 max-lg:grid-cols-1">
-          <div className="relative z-0 -ml-24 w-[140%] max-w-none origin-bottom-left scale-85 max-lg:ml-0 max-lg:w-full max-lg:scale-100">
+          <div className="group relative z-0 -ml-24 w-[140%] max-w-none origin-bottom-left scale-85 max-lg:ml-0 max-lg:w-full max-lg:scale-100">
             <Image
-              src={assetPath("/images/Group 70.png")}
+              src={assetPath("/images/about-img.png")}
               alt="Codevo team collaborating around a website design"
               width={900}
               height={700}
               className="h-auto w-full object-contain object-bottom"
             />
+
+            <Image
+              src={assetPath("/images/high-quality.png")}
+              alt=""
+              width={149}
+              height={60}
+              aria-hidden
+              className="pointer-events-none absolute top-[50%] left-[16%] z-20 w-[26%] max-w-[170px] -translate-x-2 translate-y-1 opacity-0 shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition-all duration-500 ease-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100 max-lg:top-[36%] max-lg:left-[4%]"
+            />
+            <Image
+              src={assetPath("/images/affordable.png")}
+              alt=""
+              width={149}
+              height={60}
+              aria-hidden
+              className="pointer-events-none absolute top-[22%] right-[2%] z-20 w-[26%] max-w-[170px] translate-x-2 -translate-y-1 opacity-0 shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition-all delay-75 duration-500 ease-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100 max-lg:top-[16%] max-lg:right-[2%]"
+            />
+            <Image
+              src={assetPath("/images/user-friendly.png")}
+              alt=""
+              width={149}
+              height={60}
+              aria-hidden
+              className="pointer-events-none absolute top-[64%] right-[25%] z-20 w-[26%] max-w-[170px] translate-y-2 opacity-0 shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition-all delay-150 duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 max-lg:top-[56%] max-lg:left-[36%]"
+            />
           </div>
 
           <div className="relative z-10 mt-36 ml-4">
             <div className="mb-5 flex items-center gap-2 text-[#6995F4]">
-              <h3 className="m-0 font-ui text-[20px] font-medium">Our Values</h3>
-              <ArrowIcon className="h-4 w-4" />
+              <h3 className="m-0 font-ui text-[20px]">Our Values</h3>
+              <ArrowIcon className="h-6 w-6" />
             </div>
 
             <div className="grid grid-cols-3 gap-3 max-sm:grid-cols-1">
               {values.map((value) => (
                 <article
-                  key={value.title}
-                  className="flex min-h-[250px] flex-col rounded-[16px] border border-[#6E2BBA]/60 bg-[#12101F] px-3.5 py-4"
+                  key={value.icon}
+                  className="flex min-h-[250px] flex-col items-center justify-center rounded-[16px] border border-[#6E2BBA]/60 bg-[#12101F] px-3.5 py-4 text-center transition-[border-color,box-shadow,background-color] duration-300 ease-out hover:border-[#6E2BBACC] hover:bg-[#1E1B34] hover:shadow-[0_0_20px_#6E2BBACC,0_4px_24px_#6E2BBA66]"
                 >
-                  <div
-                    className="mb-5 grid h-11 w-11 place-items-center rounded-[10px]"
-                    style={{
-                      color: value.color,
-                      background: `${value.color}22`,
-                      boxShadow: `0 0 20px ${value.color}30`,
-                    }}
-                  >
-                    {value.icon}
+                  <div className="relative mb-5 flex size-[100px] shrink-0 items-center justify-center">
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0"
+                      style={{
+                        maskImage:
+                          "radial-gradient(circle at center, black 30%, transparent 68%)",
+                        WebkitMaskImage:
+                          "radial-gradient(circle at center, black 30%, transparent 68%)",
+                      }}
+                    >
+                      <svg
+                        className="absolute inset-0 size-full"
+                        viewBox="0 0 100 100"
+                        fill="none"
+                      >
+                        {[0.5, 20, 40, 60, 80, 99.5].map((pos) => (
+                          <g key={pos}>
+                            <line
+                              x1={pos}
+                              y1="0.5"
+                              x2={pos}
+                              y2="99.5"
+                              stroke="#6E2BBA"
+                              strokeOpacity="0.7"
+                              strokeWidth="1"
+                            />
+                            <line
+                              x1="0.5"
+                              y1={pos}
+                              x2="99.5"
+                              y2={pos}
+                              stroke="#6E2BBA"
+                              strokeOpacity="0.7"
+                              strokeWidth="1"
+                            />
+                          </g>
+                        ))}
+                      </svg>
+                    </div>
+
+                    <div
+                      className="relative z-10 grid size-[43px] place-items-center rounded-[10px] border border-transparent"
+                      style={{
+                        color: value.color,
+                        background: `
+                          radial-gradient(circle at 50% 45%, #1E1B34 0%, #282444 100%) padding-box,
+                          linear-gradient(135deg, #6B4A8C, #5A3A7A, #7A5A9A, #4A1A7A) border-box
+                        `,
+                      }}
+                    >
+                      <span
+                        aria-hidden
+                        className="block size-6"
+                        style={{
+                          backgroundColor: "currentColor",
+                          WebkitMask: `url(${assetPath(value.icon)}) center / contain no-repeat`,
+                          mask: `url(${assetPath(value.icon)}) center / contain no-repeat`,
+                        }}
+                      />
+                    </div>
                   </div>
                   <h4
-                    className="m-0 mb-3 font-ui text-[15px] leading-[1.3] font-medium"
+                    className="m-0 mb-3 font-ui text-[15px] leading-[1.3]"
                     style={{ color: value.color }}
                   >
                     {value.title}

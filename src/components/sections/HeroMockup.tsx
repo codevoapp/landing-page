@@ -27,7 +27,7 @@ const cornerTilt: Record<
 };
 
 const staticLoader = ({ src }: { src: string }) => src;
-const baseMockup = assetPath("/images/group-94.svg");
+const baseMockup = assetPath("/images/hero-mockup.svg");
 
 const cornerVariants: Record<
   "top-left" | "top-right" | "bottom-left" | "bottom-right",
