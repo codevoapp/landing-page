@@ -336,6 +336,138 @@ body::before {
   background-size: 90px 90px;
 }
 
+.band-dark > .why-us-dots {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+  background-image: radial-gradient(rgb(255 255 255 / 0.4) 1.25px, transparent 1.25px);
+  background-size: 90px 90px;
+}
+
+.why-us-title-accent {
+  background: linear-gradient(90deg, #b06aff 0%, #e879f9 55%, #f0abfc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.why-us-glow {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at center,
+      rgb(168 85 247 / 0.32) 0%,
+      rgb(109 40 217 / 0.18) 32%,
+      rgb(88 28 135 / 0.08) 55%,
+      transparent 72%
+    );
+  filter: blur(32px);
+}
+
+.why-us-inner-ring-glow {
+  box-shadow:
+    0 0 18px rgb(136 68 242 / 0.22),
+    0 0 40px rgb(168 85 247 / 0.12);
+}
+
+@media (max-width: 767px) {
+  .why-us-glow {
+    width: 190px;
+    height: 190px;
+    filter: blur(22px);
+  }
+}
+
+.why-us-card {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    background 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.group\/card:hover .why-us-card {
+  z-index: 5;
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      color-mix(in srgb, var(--card-color) 28%, #1e1b34) 0%,
+      #1e1b34 70%
+    ) !important;
+  border-color: var(--card-color) !important;
+  box-shadow:
+    0 0 20px var(--card-glow),
+    0 4px 24px var(--card-glow-soft),
+    inset 0 0 40px color-mix(in srgb, var(--card-color) 18%, transparent) !important;
+}
+
+.why-us-detail-card--left {
+  transform: translate(8px, -50%);
+}
+
+.why-us-detail-card--right {
+  transform: translate(-8px, -50%);
+}
+
+.group\/card:hover .why-us-detail-card--left,
+.group\/card:hover .why-us-detail-card--right {
+  transform: translate(0, -50%);
+}
+
+.why-us-card-detail-bg {
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      color-mix(in srgb, var(--card-color) 28%, #1e1b34) 0%,
+      #1e1b34 70%
+    );
+  box-shadow: inset 0 0 40px color-mix(in srgb, var(--card-color) 18%, transparent);
+}
+
+@keyframes why-us-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes why-us-orbit-counter {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+.why-us-orbit-spin {
+  animation: why-us-orbit-spin 50s linear infinite;
+}
+
+.why-us-orbit-counter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  animation: why-us-orbit-counter 50s linear infinite;
+}
+
+.why-us-orbit:hover .why-us-orbit-spin,
+.why-us-orbit:hover .why-us-orbit-counter {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why-us-orbit-spin,
+  .why-us-orbit-counter {
+    animation: none;
+  }
+}
+
 /* Hero atmosphere — soft blue glow + fading dot grid */
 .band-dark.glow-hero {
   --glow-1: #5b6cff;

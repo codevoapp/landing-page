@@ -9,6 +9,7 @@ import Quote from "@/components/sections/Quote";
 import { Services } from "@/components/sections/Services";
 import Team from "@/components/sections/Team";
 import { Testimonials } from "@/components/sections/Testimonials";
+import WhyUs from "@/components/sections/WhyUs";
 import { Work } from "@/components/sections/Work";
 
 export default function HomePage() {
@@ -20,6 +21,7 @@ export default function HomePage() {
       <About />
       <Quote />
       <Team />
+      <WhyUs />
       {/* <Work />
       <Services /> */}
       <Pricing />

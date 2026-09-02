@@ -159,7 +159,7 @@ export const teamMembers = [
   {
     name: "Rahmat Tomy",
     role: "Tech Lead",
-    image: "/images/team/tomy.jpg",
+    image: "/images/team/rahmattomy.png",
     bio: "He leads technical decisions with clarity and pragmatism. From architecture to delivery, he helps the team build reliable systems that scale with the product and the business.",
   },
   {
